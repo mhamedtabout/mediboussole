@@ -1,0 +1,24 @@
+{
+  "model": "gemma4:e4b-it-q4_K_M",
+  "n_queries": 5,
+  "retrieval_ms": {
+    "p50": 11.481584049761295,
+    "p95": 129.29229097208017,
+    "max": 844.5780829642899
+  },
+  "llm_ms": {
+    "cold": 29364.400874997955,
+    "warm_p50": 25978.812291985378,
+    "warm_p95": 26880.906533123925
+  },
+  "triage_distribution": {
+    "ROUGE": 3,
+    "JAUNE": 1,
+    "VERT": 1,
+    "?": 0
+  },
+  "memory_mb": {
+    "ollama_runner_rss_mb": 10407.6
+  },
+  "timestamp": "2026-05-06T18:26:33"
+}

@@ -1,0 +1,97 @@
+1
+00:00:00,000 --> 00:00:08,000
+Pour 3,5 millions d'agents de santé communautaires,
+la médecine commence ici.
+
+2
+00:00:08,000 --> 00:00:14,000
+Aïcha est agente de santé communautaire.
+
+3
+00:00:14,000 --> 00:00:21,000
+Aujourd'hui, elle voit Mariam.
+14 mois. Fièvre. Léthargie.
+
+4
+00:00:21,000 --> 00:00:28,000
+Son guide : un protocole papier.
+200 pages. Et zéro réseau.
+
+5
+00:00:28,000 --> 00:00:36,000
+Une décision de triage erronée :
+1 enfant qui meurt évitablement par minute. — OMS
+
+6
+00:00:36,000 --> 00:00:45,000
+Aïcha a besoin d'un médecin. Maintenant.
+Mais le médecin est à 80 km.
+
+7
+00:00:45,000 --> 00:00:53,000
+Voici MediBoussole.
+
+8
+00:00:53,000 --> 00:01:00,000
+100% offline. Aucune donnée
+ne quitte le téléphone.
+
+9
+00:01:00,000 --> 00:01:08,000
+Elle parle dans sa langue.
+Wolof, bambara, peul, français — peu importe.
+
+10
+00:01:08,000 --> 00:01:18,000
+Une photo. Gemma 4 voit
+ce qu'Aïcha voit.
+
+11
+00:01:18,000 --> 00:01:28,000
+Gemma 4 E4B —
+multimodal natif, sur l'appareil.
+
+12
+00:01:28,000 --> 00:01:38,000
+RAG : chaque réponse est ancrée
+dans le protocole OMS.
+
+13
+00:01:38,000 --> 00:01:48,000
+Triage rouge. Critères : fièvre élevée,
+léthargie, déshydratation modérée.
+
+14
+00:01:48,000 --> 00:01:58,000
+Function calling Gemma 4 :
+SMS auto-généré.
+
+15
+00:01:58,000 --> 00:02:08,000
+Le SMS part par 2G.
+Internet n'est pas requis.
+
+16
+00:02:08,000 --> 00:02:15,000
+20 minutes après. Mariam est en route.
+Le médecin attend déjà.
+
+17
+00:02:15,000 --> 00:02:25,000
+Le médecin reçoit le résumé
+clinique structuré. Il sait déjà.
+
+18
+00:02:25,000 --> 00:02:38,000
+3,5 millions d'ASC.
+Un téléphone Android à 150 €. Zéro internet requis.
+
+19
+00:02:38,000 --> 00:02:50,000
+MediBoussole ne remplace pas Aïcha.
+Elle l'amplifie.
+
+20
+00:02:50,000 --> 00:03:00,000
+MediBoussole · Built on Gemma 4 + Ollama
+Open source · CC-BY 4.0

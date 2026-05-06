@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 -5 10 10" refX="9" refY="0" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,-5L10,0L0,5" fill="#263238"/>
+    </marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fafbfc"/>
+      <stop offset="100%" stop-color="#eceff1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="600" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#0d47a1">MediBoussole — Architecture système</text>
+  <text x="600" y="68" text-anchor="middle" font-size="14" fill="#546e7a">Triage IMCI hors-ligne sur Android · Gemma 4 E4B + RAG + Function Calling · 100% offline</text>
+
+  <!-- ============ User layer ============ -->
+  <g transform="translate(40, 100)">
+    <rect width="220" height="120" rx="10" fill="#e1f5fe" stroke="#0277bd" stroke-width="2"/>
+    <text x="110" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#01579b">Agent de Santé Communautaire</text>
+    <text x="110" y="50" text-anchor="middle" font-size="11" fill="#0277bd">Zone rurale · pas d'internet</text>
+    <line x1="20" y1="62" x2="200" y2="62" stroke="#0277bd"/>
+    <text x="110" y="82" text-anchor="middle" font-size="11" fill="#01579b">📱 Android entrée de gamme</text>
+    <text x="110" y="100" text-anchor="middle" font-size="11" fill="#01579b">RAM 6 GB · 64 GB stockage</text>
+  </g>
+
+  <!-- ============ Inputs ============ -->
+  <g transform="translate(310, 100)">
+    <rect width="180" height="55" rx="8" fill="#fff8e1" stroke="#f57f17" stroke-width="2"/>
+    <text x="90" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#e65100">🎤 Voix</text>
+    <text x="90" y="42" text-anchor="middle" font-size="10" fill="#bf360c">FR / Wolof / Bambara / Peul</text>
+  </g>
+  <g transform="translate(310, 165)">
+    <rect width="180" height="55" rx="8" fill="#fff8e1" stroke="#f57f17" stroke-width="2"/>
+    <text x="90" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#e65100">📷 Photo</text>
+    <text x="90" y="42" text-anchor="middle" font-size="10" fill="#bf360c">Enfant / lésion / MUAC</text>
+  </g>
+
+  <!-- Arrows user → inputs -->
+  <line x1="260" y1="160" x2="305" y2="125" stroke="#263238" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="260" y1="160" x2="305" y2="190" stroke="#263238" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ============ Preprocessing ============ -->
+  <g transform="translate(540, 100)">
+    <rect width="190" height="55" rx="8" fill="#e8eaf6" stroke="#3949ab" stroke-width="2"/>
+    <text x="95" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1a237e">whisper.cpp</text>
+    <text x="95" y="42" text-anchor="middle" font-size="10" fill="#283593">ASR multilingue local · ggml</text>
+  </g>
+  <g transform="translate(540, 165)">
+    <rect width="190" height="55" rx="8" fill="#e8eaf6" stroke="#3949ab" stroke-width="2"/>
+    <text x="95" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1a237e">Image preprocess</text>
+    <text x="95" y="42" text-anchor="middle" font-size="10" fill="#283593">resize 896² · normalisation</text>
+  </g>
+
+  <line x1="490" y1="127" x2="535" y2="127" stroke="#263238" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="490" y1="192" x2="535" y2="192" stroke="#263238" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ============ Core: Gemma 4 E4B + RAG ============ -->
+  <g transform="translate(770, 95)">
+    <rect width="390" height="195" rx="12" fill="#c8e6c9" stroke="#1b5e20" stroke-width="3"/>
+    <text x="195" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#1b5e20">Gemma 4 E4B (Q4_K_M) via Ollama</text>
+    <text x="195" y="48" text-anchor="middle" font-size="11" fill="#1b5e20">Inférence locale · ~2.3 GB RAM · multimodal natif</text>
+    <line x1="20" y1="60" x2="370" y2="60" stroke="#1b5e20"/>
+
+    <!-- RAG block -->
+    <rect x="20" y="75" width="170" height="100" rx="6" fill="#fff" stroke="#1b5e20"/>
+    <text x="105" y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#1b5e20">RAG injection</text>
+    <text x="105" y="110" text-anchor="middle" font-size="9" fill="#33691e">FAISS index (cosine)</text>
+    <text x="105" y="125" text-anchor="middle" font-size="9" fill="#33691e">Embeddings multilingues</text>
+    <text x="105" y="140" text-anchor="middle" font-size="9" fill="#33691e">paraphrase-multilingual-mpnet</text>
+    <text x="105" y="158" text-anchor="middle" font-size="10" fill="#1b5e20">top-k=4 · WHO IMCI</text>
+
+    <!-- Tools block -->
+    <rect x="200" y="75" width="170" height="100" rx="6" fill="#fff" stroke="#1b5e20"/>
+    <text x="285" y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#1b5e20">Function calling</text>
+    <text x="285" y="110" text-anchor="middle" font-size="9" fill="#33691e">send_referral_sms()</text>
+    <text x="285" y="125" text-anchor="middle" font-size="9" fill="#33691e">generate_clinical_note()</text>
+    <text x="285" y="140" text-anchor="middle" font-size="9" fill="#33691e">log_case_to_disk()</text>
+    <text x="285" y="158" text-anchor="middle" font-size="10" fill="#1b5e20">JSON schémas natifs</text>
+  </g>
+
+  <line x1="730" y1="127" x2="765" y2="170" stroke="#263238" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="730" y1="192" x2="765" y2="195" stroke="#263238" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ============ Knowledge sources (below RAG) ============ -->
+  <g transform="translate(770, 305)">
+    <rect width="390" height="80" rx="10" fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+    <text x="195" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#bf360c">Corpus de connaissance (indexé hors-ligne)</text>
+    <text x="195" y="44" text-anchor="middle" font-size="10" fill="#bf360c">• WHO IMCI Chart Booklet (CC-BY)</text>
+    <text x="195" y="60" text-anchor="middle" font-size="10" fill="#bf360c">• Protocoles Ministère de la Santé locaux (publics)</text>
+    <text x="195" y="74" text-anchor="middle" font-size="10" fill="#bf360c">• Fiches dosage pédiatrique (formulaires nationaux)</text>
+  </g>
+  <line x1="965" y1="295" x2="965" y2="300" stroke="#263238" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ============ Outputs ============ -->
+  <text x="600" y="430" text-anchor="middle" font-size="16" font-weight="700" fill="#263238">Sorties</text>
+
+  <g transform="translate(140, 450)">
+    <rect width="240" height="110" rx="10" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+    <text x="120" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="#b71c1c">🚨 Triage rouge / jaune / vert</text>
+    <text x="120" y="50" text-anchor="middle" font-size="10" fill="#b71c1c">Décision visible 1 seconde</text>
+    <text x="120" y="66" text-anchor="middle" font-size="10" fill="#b71c1c">Critères cités (page IMCI)</text>
+    <text x="120" y="82" text-anchor="middle" font-size="10" fill="#b71c1c">Score de confiance affiché</text>
+    <text x="120" y="100" text-anchor="middle" font-size="10" font-style="italic" fill="#880e4f">Si confiance &lt; τ : "référer"</text>
+  </g>
+
+  <g transform="translate(420, 450)">
+    <rect width="240" height="110" rx="10" fill="#ede7f6" stroke="#4527a0" stroke-width="2"/>
+    <text x="120" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="#311b92">📨 SMS de référence</text>
+    <text x="120" y="50" text-anchor="middle" font-size="10" fill="#311b92">Auto-généré (function call)</text>
+    <text x="120" y="66" text-anchor="middle" font-size="10" fill="#311b92">Format SOAP compact</text>
+    <text x="120" y="82" text-anchor="middle" font-size="10" fill="#311b92">Envoyé via 2G (160 chars)</text>
+    <text x="120" y="100" text-anchor="middle" font-size="10" font-style="italic" fill="#311b92">Internet non requis</text>
+  </g>
+
+  <g transform="translate(700, 450)">
+    <rect width="240" height="110" rx="10" fill="#e0f2f1" stroke="#00695c" stroke-width="2"/>
+    <text x="120" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="#004d40">📋 Note clinique</text>
+    <text x="120" y="50" text-anchor="middle" font-size="10" fill="#004d40">Format SOAP complet</text>
+    <text x="120" y="66" text-anchor="middle" font-size="10" fill="#004d40">Stockée localement (chiffrée)</text>
+    <text x="120" y="82" text-anchor="middle" font-size="10" fill="#004d40">Sync différée si réseau</text>
+    <text x="120" y="100" text-anchor="middle" font-size="10" font-style="italic" fill="#004d40">Audit trail médico-légal</text>
+  </g>
+
+  <g transform="translate(980, 450)">
+    <rect width="180" height="110" rx="10" fill="#fce4ec" stroke="#ad1457" stroke-width="2"/>
+    <text x="90" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="#880e4f">🗣️ Réponse vocale</text>
+    <text x="90" y="50" text-anchor="middle" font-size="10" fill="#880e4f">TTS local (Piper)</text>
+    <text x="90" y="66" text-anchor="middle" font-size="10" fill="#880e4f">Langue de l'utilisateur</text>
+    <text x="90" y="82" text-anchor="middle" font-size="10" fill="#880e4f">Pour ASC peu lettrés</text>
+    <text x="90" y="100" text-anchor="middle" font-size="9" font-style="italic" fill="#880e4f">Phase 2 (post-MVP)</text>
+  </g>
+
+  <line x1="965" y1="295" x2="260" y2="445" stroke="#263238" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="965" y1="295" x2="540" y2="445" stroke="#263238" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="965" y1="295" x2="820" y2="445" stroke="#263238" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="965" y1="295" x2="1070" y2="445" stroke="#263238" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- ============ Safety / scope guardrails ============ -->
+  <g transform="translate(40, 600)">
+    <rect width="1120" height="135" rx="10" fill="#fafafa" stroke="#37474f" stroke-width="1.5"/>
+    <text x="20" y="26" font-size="14" font-weight="700" fill="#263238">🛡️ Garde-fous (Safety &amp; Trust)</text>
+
+    <text x="20" y="52" font-size="11" fill="#37474f">1. <tspan font-weight="700">Scope verrouillé</tspan> : IMCI &lt;5 ans uniquement. Hors scope (oncologie, chirurgie, pathologies adultes) → réponse "référer".</text>
+    <text x="20" y="72" font-size="11" fill="#37474f">2. <tspan font-weight="700">Abstention par seuil</tspan> : si max(similarité RAG) &lt; τ=0.55 → ne pas générer de diagnostic, déclencher "référer".</text>
+    <text x="20" y="92" font-size="11" fill="#37474f">3. <tspan font-weight="700">Citation obligatoire</tspan> : chaque recommandation cite la page IMCI source. Pas de réponse → pas de page → pas de recommandation.</text>
+    <text x="20" y="112" font-size="11" fill="#37474f">4. <tspan font-weight="700">Audit trail</tspan> : chaque cas (entrée + sortie + retrieved chunks) est journalisé localement, chiffré (AES-256), exportable pour revue.</text>
+    <text x="20" y="128" font-size="11" font-style="italic" fill="#37474f">MediBoussole est un outil d'<tspan font-weight="700">aide à la décision</tspan>. Il ne remplace pas l'agent de santé ni le médecin référent.</text>
+  </g>
+</svg>

@@ -1,0 +1,97 @@
+1
+00:00:00,000 --> 00:00:08,000
+For 3.5 million community health workers,
+medicine begins here.
+
+2
+00:00:08,000 --> 00:00:14,000
+Aïcha is a community health worker.
+
+3
+00:00:14,000 --> 00:00:21,000
+Today, she sees Mariam.
+14 months old. Fever. Lethargic.
+
+4
+00:00:21,000 --> 00:00:28,000
+Her guide: a 200-page paper protocol.
+And zero network.
+
+5
+00:00:28,000 --> 00:00:36,000
+A bad triage decision:
+1 child dies preventably every minute. — WHO
+
+6
+00:00:36,000 --> 00:00:45,000
+Aïcha needs a doctor. Now.
+But the doctor is 80 km away.
+
+7
+00:00:45,000 --> 00:00:53,000
+This is MediBoussole.
+
+8
+00:00:53,000 --> 00:01:00,000
+100% offline. No data
+ever leaves the phone.
+
+9
+00:01:00,000 --> 00:01:08,000
+She speaks her own language.
+Wolof, Bambara, Fula, French — it doesn't matter.
+
+10
+00:01:08,000 --> 00:01:18,000
+One photo. Gemma 4 sees
+what Aïcha sees.
+
+11
+00:01:18,000 --> 00:01:28,000
+Gemma 4 E4B —
+native multimodal, on-device.
+
+12
+00:01:28,000 --> 00:01:38,000
+RAG: every answer is grounded
+in WHO protocols.
+
+13
+00:01:38,000 --> 00:01:48,000
+Red triage. Criteria: high fever,
+lethargy, moderate dehydration.
+
+14
+00:01:48,000 --> 00:01:58,000
+Gemma 4 function calling:
+SMS auto-generated.
+
+15
+00:01:58,000 --> 00:02:08,000
+The SMS goes out via 2G.
+No internet required.
+
+16
+00:02:08,000 --> 00:02:15,000
+Twenty minutes later. Mariam is on her way.
+The doctor is already waiting.
+
+17
+00:02:15,000 --> 00:02:25,000
+The doctor receives a structured
+clinical summary. She already knows.
+
+18
+00:02:25,000 --> 00:02:38,000
+3.5 million CHWs.
+A €150 Android phone. Zero internet required.
+
+19
+00:02:38,000 --> 00:02:50,000
+MediBoussole doesn't replace Aïcha.
+It amplifies her.
+
+20
+00:02:50,000 --> 00:03:00,000
+MediBoussole · Built on Gemma 4 + Ollama
+Open source · CC-BY 4.0

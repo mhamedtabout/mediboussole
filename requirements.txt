@@ -1,0 +1,32 @@
+# MediBoussole — dépendances Python
+# Tested on Python 3.11, macOS 14 (M1 Max). Should work on Linux / Windows.
+
+# LLM serving
+ollama>=0.4.0
+
+# Embeddings + retrieval
+sentence-transformers>=3.0.0
+faiss-cpu>=1.8.0          # CPU is enough for ~10k passages
+numpy>=1.26.0
+
+# PDF + data
+pypdf>=5.0.0
+pandas>=2.2.0
+
+# Web UI demo
+streamlit>=1.40.0
+pillow>=10.4.0
+
+# Audio (multilingual ASR offline)
+openai-whisper>=20240930
+soundfile>=0.12.0
+
+# Notebook conversion (jupytext format <-> .ipynb)
+jupytext>=1.16.0
+ipykernel>=6.29.0
+
+# Optional: if running models without Ollama
+# transformers>=4.45.0
+# torch>=2.4.0
+# accelerate>=0.34.0
+# bitsandbytes>=0.43.0    # quantization (GPU only)

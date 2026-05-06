@@ -1,0 +1,30 @@
+# Configuration Render.com pour déployer la démo Streamlit
+# https://render.com/docs/yaml-spec
+#
+# Push ce repo sur GitHub puis "New + Blueprint" sur dashboard.render.com
+# pointer vers ce render.yaml.
+#
+# ⚠️ Render n'a pas de GPU. Pour la démo en ligne, deux choix :
+#  - Utiliser le mode démo (Ollama indisponible → fallback simulé) — RECOMMANDÉ pour démo publique
+#  - Provisionner un Ollama sur autre infra et exposer via OLLAMA_HOST
+
+services:
+  - type: web
+    name: mediboussole
+    runtime: docker
+    plan: starter         # 512 MB RAM, suffisant pour mode démo
+    region: frankfurt     # Plus proche que oregon pour FR/Afrique
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: OLLAMA_HOST
+        value: "http://host.docker.internal:11434"
+      - key: MEDIBOUSSOLE_MODEL
+        value: "gemma4:e4b-it-q4_K_M"
+      - key: STREAMLIT_SERVER_HEADLESS
+        value: "true"
+      - key: STREAMLIT_BROWSER_GATHER_USAGE_STATS
+        value: "false"

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 760" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 -5 10 10" refX="9" refY="0" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,-5L10,0L0,5" fill="#37474f"/>
+    </marker>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fafbfc"/>
+      <stop offset="100%" stop-color="#eceff1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1100" height="760" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="550" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#1a237e">Gemma 4 — Famille de modèles</text>
+  <text x="550" y="68" text-anchor="middle" font-size="14" fill="#546e7a">Variantes Edge (E2B, E4B) et Serveur (26B, 31B) — architecture transformer décodeur partagée</text>
+
+  <!-- ===================== Variant cards ===================== -->
+  <!-- E2B -->
+  <g transform="translate(40, 95)">
+    <rect width="240" height="115" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+    <text x="120" y="28" text-anchor="middle" font-size="18" font-weight="700" fill="#1b5e20">Gemma 4 E2B</text>
+    <text x="120" y="50" text-anchor="middle" font-size="12" fill="#33691e">~2B paramètres effectifs</text>
+    <text x="120" y="70" text-anchor="middle" font-size="12" fill="#33691e">Mobile bas de gamme</text>
+    <text x="120" y="90" text-anchor="middle" font-size="12" fill="#33691e">RAM ≤ 3 GB · Q4_K_M</text>
+    <text x="120" y="108" text-anchor="middle" font-size="11" fill="#558b2f">Latence basse · IoT</text>
+  </g>
+
+  <!-- E4B (highlighted as choice) -->
+  <g transform="translate(295, 95)">
+    <rect width="240" height="115" rx="10" fill="#c8e6c9" stroke="#1b5e20" stroke-width="3"/>
+    <text x="120" y="28" text-anchor="middle" font-size="18" font-weight="700" fill="#1b5e20">Gemma 4 E4B ★</text>
+    <text x="120" y="50" text-anchor="middle" font-size="12" fill="#1b5e20">~4B paramètres effectifs</text>
+    <text x="120" y="70" text-anchor="middle" font-size="12" fill="#1b5e20">Mobile premium / edge</text>
+    <text x="120" y="90" text-anchor="middle" font-size="12" fill="#1b5e20">RAM ~3 GB · Q4_K_M</text>
+    <text x="120" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#1b5e20">Choix MediBoussole</text>
+  </g>
+
+  <!-- 26B -->
+  <g transform="translate(560, 95)">
+    <rect width="240" height="115" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+    <text x="120" y="28" text-anchor="middle" font-size="18" font-weight="700" fill="#0d47a1">Gemma 4 26B</text>
+    <text x="120" y="50" text-anchor="middle" font-size="12" fill="#0d47a1">26B paramètres</text>
+    <text x="120" y="70" text-anchor="middle" font-size="12" fill="#0d47a1">Workstation / serveur</text>
+    <text x="120" y="90" text-anchor="middle" font-size="12" fill="#0d47a1">VRAM ≥ 24 GB</text>
+    <text x="120" y="108" text-anchor="middle" font-size="11" fill="#1976d2">Distillation · usage cloud</text>
+  </g>
+
+  <!-- 31B -->
+  <g transform="translate(815, 95)">
+    <rect width="240" height="115" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+    <text x="120" y="28" text-anchor="middle" font-size="18" font-weight="700" fill="#0d47a1">Gemma 4 31B</text>
+    <text x="120" y="50" text-anchor="middle" font-size="12" fill="#0d47a1">31B paramètres</text>
+    <text x="120" y="70" text-anchor="middle" font-size="12" fill="#0d47a1">Serveur haute performance</text>
+    <text x="120" y="90" text-anchor="middle" font-size="12" fill="#0d47a1">VRAM ≥ 48 GB</text>
+    <text x="120" y="108" text-anchor="middle" font-size="11" fill="#1976d2">Tâches complexes · agents</text>
+  </g>
+
+  <!-- ===================== Shared architecture title ===================== -->
+  <text x="550" y="252" text-anchor="middle" font-size="18" font-weight="700" fill="#263238">Architecture partagée</text>
+  <text x="550" y="272" text-anchor="middle" font-size="12" fill="#546e7a">Transformer Decoder + Vision Encoder + tête Function Calling structuré</text>
+
+  <!-- Vision encoder (left) -->
+  <g transform="translate(40, 295)">
+    <rect width="220" height="320" rx="10" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+    <text x="110" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#bf360c">Vision Encoder</text>
+    <text x="110" y="48" text-anchor="middle" font-size="11" fill="#bf360c">(SigLIP-style ViT)</text>
+    <line x1="20" y1="60" x2="200" y2="60" stroke="#e65100" stroke-width="1"/>
+
+    <rect x="30" y="75" width="160" height="32" fill="#fff" stroke="#bf360c" rx="4"/>
+    <text x="110" y="95" text-anchor="middle" font-size="11" fill="#3e2723">Image (RGB) 896×896</text>
+
+    <text x="110" y="125" text-anchor="middle" font-size="14" fill="#bf360c">▼</text>
+
+    <rect x="30" y="135" width="160" height="32" fill="#fff" stroke="#bf360c" rx="4"/>
+    <text x="110" y="155" text-anchor="middle" font-size="11" fill="#3e2723">Patches 14×14 → embeddings</text>
+
+    <text x="110" y="185" text-anchor="middle" font-size="14" fill="#bf360c">▼</text>
+
+    <rect x="30" y="195" width="160" height="32" fill="#fff" stroke="#bf360c" rx="4"/>
+    <text x="110" y="215" text-anchor="middle" font-size="11" fill="#3e2723">N × ViT blocks (MHA + MLP)</text>
+
+    <text x="110" y="245" text-anchor="middle" font-size="14" fill="#bf360c">▼</text>
+
+    <rect x="30" y="255" width="160" height="48" fill="#ffe0b2" stroke="#bf360c" rx="4"/>
+    <text x="110" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="#3e2723">Tokens visuels</text>
+    <text x="110" y="290" text-anchor="middle" font-size="10" fill="#3e2723">projection W_p → espace LLM</text>
+  </g>
+
+  <!-- Transformer Decoder (center) -->
+  <g transform="translate(290, 295)">
+    <rect width="510" height="320" rx="10" fill="#fafafa" stroke="#37474f" stroke-width="2"/>
+    <text x="255" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#263238">Transformer Decoder</text>
+
+    <!-- Input -->
+    <rect x="30" y="48" width="450" height="34" fill="#fff" stroke="#607d8b" rx="4"/>
+    <text x="255" y="69" text-anchor="middle" font-size="12" fill="#263238">Input séquence : [tokens visuels] ⊕ [tokens texte] + RoPE positions</text>
+
+    <text x="255" y="100" text-anchor="middle" font-size="13" fill="#37474f">▼</text>
+
+    <!-- Decoder block stack -->
+    <rect x="30" y="110" width="450" height="160" fill="#eceff1" stroke="#37474f" stroke-width="1.5" rx="6"/>
+    <text x="255" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#263238">Decoder Block × N (couches profondes)</text>
+
+    <rect x="50" y="142" width="190" height="28" fill="#fff" stroke="#546e7a" rx="3"/>
+    <text x="145" y="161" text-anchor="middle" font-size="11" fill="#263238">RMSNorm</text>
+
+    <rect x="270" y="142" width="190" height="28" fill="#fff" stroke="#546e7a" rx="3"/>
+    <text x="365" y="161" text-anchor="middle" font-size="11" fill="#263238">Multi-Head Attention (GQA)</text>
+
+    <rect x="50" y="180" width="190" height="28" fill="#fff" stroke="#546e7a" rx="3"/>
+    <text x="145" y="199" text-anchor="middle" font-size="11" fill="#263238">Residual + RMSNorm</text>
+
+    <rect x="270" y="180" width="190" height="28" fill="#fff" stroke="#546e7a" rx="3"/>
+    <text x="365" y="199" text-anchor="middle" font-size="11" fill="#263238">FFN SwiGLU</text>
+
+    <rect x="50" y="218" width="410" height="28" fill="#fff" stroke="#546e7a" rx="3"/>
+    <text x="255" y="237" text-anchor="middle" font-size="11" fill="#263238">Attention causale (KV cache pour génération autoregressive)</text>
+
+    <text x="255" y="290" text-anchor="middle" font-size="13" fill="#37474f">▼</text>
+
+    <!-- Output -->
+    <rect x="30" y="296" width="450" height="18" fill="#fff" stroke="#607d8b" rx="4"/>
+    <text x="255" y="309" text-anchor="middle" font-size="11" fill="#263238">RMSNorm finale + LM head (tied embeddings) → logits |V|</text>
+  </g>
+
+  <!-- Function calling (right) -->
+  <g transform="translate(830, 295)">
+    <rect width="225" height="320" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2"/>
+    <text x="112" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#4a148c">Function Calling</text>
+    <text x="112" y="48" text-anchor="middle" font-size="11" fill="#4a148c">(natif Gemma 4)</text>
+    <line x1="20" y1="60" x2="205" y2="60" stroke="#6a1b9a" stroke-width="1"/>
+
+    <rect x="20" y="75" width="185" height="34" fill="#fff" stroke="#6a1b9a" rx="4"/>
+    <text x="112" y="89" text-anchor="middle" font-size="10" fill="#3e2723">Schémas JSON des outils</text>
+    <text x="112" y="103" text-anchor="middle" font-size="10" fill="#3e2723">injectés au prompt système</text>
+
+    <text x="112" y="128" text-anchor="middle" font-size="14" fill="#6a1b9a">▼</text>
+
+    <rect x="20" y="138" width="185" height="50" fill="#fff" stroke="#6a1b9a" rx="4"/>
+    <text x="112" y="156" text-anchor="middle" font-size="10" fill="#3e2723">Décodage structuré</text>
+    <text x="112" y="170" text-anchor="middle" font-size="10" fill="#3e2723" font-style="italic">{"tool": "...",</text>
+    <text x="112" y="183" text-anchor="middle" font-size="10" fill="#3e2723" font-style="italic">"args": {...}}</text>
+
+    <text x="112" y="208" text-anchor="middle" font-size="14" fill="#6a1b9a">▼</text>
+
+    <rect x="20" y="218" width="185" height="34" fill="#fff" stroke="#6a1b9a" rx="4"/>
+    <text x="112" y="232" text-anchor="middle" font-size="10" fill="#3e2723">Exécution locale</text>
+    <text x="112" y="246" text-anchor="middle" font-size="10" fill="#3e2723">(SMS, RAG, capteur...)</text>
+
+    <text x="112" y="271" text-anchor="middle" font-size="14" fill="#6a1b9a">▼</text>
+
+    <rect x="20" y="280" width="185" height="28" fill="#ede7f6" stroke="#6a1b9a" rx="4"/>
+    <text x="112" y="299" text-anchor="middle" font-size="10" fill="#3e2723">Résultat ré-injecté au LLM</text>
+  </g>
+
+  <!-- Arrows from variants to architecture -->
+  <line x1="160" y1="210" x2="160" y2="290" stroke="#37474f" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <line x1="415" y1="210" x2="415" y2="290" stroke="#37474f" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="680" y1="210" x2="680" y2="290" stroke="#37474f" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <line x1="935" y1="210" x2="935" y2="290" stroke="#37474f" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Arrows between architecture blocks -->
+  <line x1="260" y1="455" x2="288" y2="455" stroke="#37474f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="800" y1="455" x2="828" y2="455" stroke="#37474f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ===================== Footer / specs ===================== -->
+  <g transform="translate(40, 645)">
+    <rect width="1020" height="90" rx="8" fill="#fff" stroke="#90a4ae" stroke-width="1"/>
+    <text x="20" y="22" font-size="13" font-weight="700" fill="#263238">Caractéristiques clés Gemma 4</text>
+    <text x="20" y="44" font-size="11" fill="#37474f">• Multimodal natif (texte + image) — vision encoder fusionné dans le décodeur</text>
+    <text x="20" y="60" font-size="11" fill="#37474f">• Function calling structuré natif (JSON schema) — décodage contraint sans fine-tuning supplémentaire</text>
+    <text x="20" y="76" font-size="11" fill="#37474f">• Open weights (licence Gemma) — déployable via Ollama, llama.cpp, MLX, LiteRT, Cactus</text>
+
+    <text x="540" y="22" font-size="13" font-weight="700" fill="#263238">Notes</text>
+    <text x="540" y="44" font-size="10" fill="#546e7a">Les comptes de paramètres "B effectifs" pour E2B/E4B reflètent l'inférence active.</text>
+    <text x="540" y="60" font-size="10" fill="#546e7a">Profondeur (N), nombre de têtes et dim cachée à confirmer dans le tech report officiel.</text>
+    <text x="540" y="76" font-size="10" fill="#546e7a">Schéma à but pédagogique — couches partagées (RMSNorm, GQA, SwiGLU, RoPE) sont conformes à la lignée Gemma.</text>
+  </g>
+</svg>

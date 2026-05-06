@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.python-version
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Notebooks
+.ipynb_checkpoints/
+notebook/*.ipynb
+
+# Données / index lourds (régénérables)
+data/raw/*.pdf
+data/index/*.faiss
+data/index/*.pkl
+
+# Modèles téléchargés
+models/
+
+# Assets vidéo (gros, à ne pas commit)
+assets/footage/*.mp4
+assets/footage/*.mov
+assets/audio/*.wav
+assets/audio/*.mp3
+assets/final/*.mp4
+assets/audio/.tmp_voice/
+
+# Garder les images du storyboard (légères) si générées
+# (commenter la ligne suivante si vous voulez aussi les ignorer)
+# assets/images/*.png
+
+# OS / Editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Secrets
+.env
+.env.local
+*.key
+*api_key*
+gcp-credentials.json
+
+# Logs
+*.log
+logs/
+
+# Source originale du concours (zip)
+*.zip
+NOTE.md

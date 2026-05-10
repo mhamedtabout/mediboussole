@@ -32,15 +32,22 @@
 # %% [markdown]
 # ## 1. Setup
 #
-# Prérequis (à installer hors notebook) :
-# ```bash
-# # Ollama (https://ollama.com)
-# brew install ollama   # macOS
-# ollama serve &        # démarrer le serveur
-#
-# # dépendances Python
-# pip install -r requirements.txt
-# ```
+# Sur Kaggle, on installe les dépendances manquantes (faiss, ollama, pypdf).
+# Sentence-transformers et numpy sont déjà présents dans l'image Kaggle par défaut.
+
+# %%
+# Installation auto sur Kaggle (skip silencieux si déjà installé)
+import subprocess as _sp
+import sys as _sys
+
+_packages_to_install = ["faiss-cpu", "ollama", "pypdf"]
+for _pkg in _packages_to_install:
+    try:
+        _name = _pkg.replace("-cpu", "").replace("-", "_")
+        __import__(_name)
+    except ImportError:
+        print(f"Installing {_pkg}...")
+        _sp.run([_sys.executable, "-m", "pip", "install", "--quiet", _pkg], check=False)
 
 # %%
 import os

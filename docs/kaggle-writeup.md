@@ -6,6 +6,16 @@
 >
 > **Author** : Mhamed Tabout (solo) · **Licence** : CC-BY 4.0
 
+🎬 **[Regarder la démo en 3 minutes →](https://youtu.be/JMaf947uMTM)** · 📓 [Notebook Kaggle reproductible](https://www.kaggle.com/code/taboutmhamed/mediboussole-offline-imci-triage-with-gemma-4) · 🌐 [Démo live](https://regression-wooden-pine-educators.trycloudflare.com)
+
+---
+
+## TL;DR — pour les juges qui scannent
+
+- **Quoi** : Gemma 4 E4B + RAG sur les protocoles WHO IMCI tournant **100 % hors-ligne** sur un Android à 150 €, pour aider les agents de santé communautaires à trier les enfants <5 ans.
+- **Pourquoi maintenant** : Gemma 4 E4B est le **premier** modèle open-weights multimodal + function-calling natif assez petit (~3 GB après Q4_K_M) pour tenir sur du hardware terrain. Avant 2026, ce projet était **mathématiquement impossible**.
+- **Preuve** : pipeline complet validé (sanity check 5/5 ✓, garde-fou hors-scope déclenché sur requête lymphome de Hodgkin), notebook Kaggle COMPLETE, démo web live, code CC-BY 4.0.
+
 ---
 
 ## 1. Le problème (et pourquoi il me touche)
@@ -36,6 +46,14 @@ L'ASC :
 
 Aucune donnée patient ne quitte le téléphone. Aucun cloud. Aucune dépendance à l'internet.
 
+### Démo flow — 3 étapes, &lt; 30 secondes sur le terrain
+
+![Demo flow MediBoussole](demo-flow.svg)
+
+> *De gauche à droite : (1) l'ASC enregistre les symptômes par la voix et prend une photo, (2) Gemma 4 produit un triage ROUGE avec citation WHO IMCI page 7 en moins de 30 s, (3) un SMS structuré est auto-généré et envoyé via 2G au centre de référence. Aucune donnée ne quitte le téléphone.*
+
+**Voir la démo en mouvement** : [vidéo YouTube de 3 minutes →](https://youtu.be/JMaf947uMTM)
+
 ---
 
 ## 3. Architecture (voir `docs/architecture.svg`)
@@ -65,6 +83,24 @@ Composants :
 - **Corpus** : WHO IMCI Chart Booklet (publié sous licence ouverte WHO)
 - **Voix** : `whisper.cpp` local (multilingue)
 - **App démo** : Streamlit (`src/app.py`)
+
+---
+
+## 3 bis. Pourquoi maintenant — et pas avant
+
+L'idée d'un assistant médical hors-ligne n'est pas nouvelle. **L'exécution l'est.** Voici pourquoi 2026 est la première année où ce projet est faisable :
+
+| Génération | Modèle de référence | Verrou |
+|---|---|---|
+| 2022 | LLaMA 7B FP16 (~13 GB) | Trop gros pour Android, multimodal séparé via OCR fragile |
+| 2023 | Gemma 1 7B Q4 (~4 GB) | Pas multimodal, function calling à émuler avec parsing fragile |
+| 2024 | Gemma 2 / 3n (~3 GB) | Multimodal arrivé mais function calling non natif |
+| 2025 | Phi-3.5, Llama 3.2 | Multimodal partiel, contexte limité, dosages hallucinés |
+| **2026** | **Gemma 4 E4B Q4_K_M (~3 GB)** | **Multimodal natif + function calling natif + tient en RAM Android** |
+
+Sans Gemma 4, MediBoussole exigerait : un classifieur d'image dédié + un OCR + un LLM séparé + un parser JSON tolérant + un RAG ad-hoc. Chacun est une source de fragilité dans une zone rurale sans ingénieur.
+
+**Avec Gemma 4, c'est UN forward pass.** L'ASC a un téléphone, pas un cluster Kubernetes. Cette compression de la complexité en un seul modèle est ce qui rend le déploiement à 3,5 M d'utilisateurs réaliste.
 
 ---
 

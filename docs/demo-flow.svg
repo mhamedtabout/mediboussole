@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 600" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fafbfc"/>
+      <stop offset="100%" stop-color="#eceff1"/>
+    </linearGradient>
+    <linearGradient id="phoneScreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f5f5f5"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6"/>
+      <feOffset dx="0" dy="6" result="offset"/>
+      <feFlood flood-color="#000" flood-opacity="0.18"/>
+      <feComposite in2="offset" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,-5L10,0L0,5" fill="#1b5e20"/>
+    </marker>
+  </defs>
+
+  <rect width="1500" height="600" fill="url(#bg)"/>
+
+  <text x="750" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#1a237e">
+    Démo flow MediBoussole — 3 étapes, &lt; 30 secondes sur le terrain
+  </text>
+
+  <!-- ============ FRAME 1 ============ -->
+  <g transform="translate(50, 90)">
+    <!-- Phone -->
+    <g filter="url(#shadow)">
+      <rect width="380" height="460" rx="32" fill="#212121"/>
+      <rect x="14" y="14" width="352" height="432" rx="20" fill="url(#phoneScreen)"/>
+    </g>
+    <!-- Status bar -->
+    <text x="35" y="50" font-size="13" font-weight="600" fill="#263238">9:42</text>
+    <g transform="translate(280, 36)">
+      <rect width="14" height="12" fill="#263238" rx="2"/>
+      <rect x="20" y="3" width="3" height="9" fill="#263238" rx="1"/>
+      <rect x="29" y="6" width="3" height="6" fill="#263238" rx="1"/>
+    </g>
+    <!-- Offline badge -->
+    <g transform="translate(35, 65)">
+      <rect width="90" height="22" rx="11" fill="#2e7d32"/>
+      <text x="45" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">HORS LIGNE</text>
+    </g>
+    <!-- App title -->
+    <text x="35" y="115" font-size="18" font-weight="700" fill="#1b5e20">MediBoussole</text>
+    <text x="35" y="135" font-size="11" fill="#546e7a">Triage IMCI</text>
+
+    <!-- Voice input UI -->
+    <g transform="translate(35, 165)">
+      <rect width="310" height="50" rx="10" fill="#e3f2fd" stroke="#1565c0"/>
+      <circle cx="30" cy="25" r="13" fill="#c62828"/>
+      <text x="30" y="29" text-anchor="middle" font-size="13" fill="#fff">●</text>
+      <text x="55" y="20" font-size="12" font-weight="600" fill="#0d47a1">Enregistrement…</text>
+      <text x="55" y="38" font-size="10" fill="#1565c0">Wolof / Bambara / FR</text>
+    </g>
+
+    <!-- Transcription appearing -->
+    <g transform="translate(35, 230)">
+      <rect width="310" height="100" rx="10" fill="#fff" stroke="#90a4ae"/>
+      <text x="15" y="25" font-size="11" font-weight="700" fill="#37474f">Transcription</text>
+      <text x="15" y="48" font-size="11" fill="#263238">« Bébé F 14 mois, fièvre</text>
+      <text x="15" y="64" font-size="11" fill="#263238">39, léthargique, refuse</text>
+      <text x="15" y="80" font-size="11" fill="#263238">de boire »</text>
+    </g>
+
+    <!-- Photo upload -->
+    <g transform="translate(35, 345)">
+      <rect width="310" height="55" rx="10" fill="#fff8e1" stroke="#f57f17" stroke-dasharray="4,3"/>
+      <text x="155" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#e65100">📷 Photo de l'enfant</text>
+      <text x="155" y="42" text-anchor="middle" font-size="10" fill="#bf360c">Vision encoder Gemma 4</text>
+    </g>
+
+    <!-- Run button -->
+    <g transform="translate(35, 415)">
+      <rect width="310" height="20" rx="10" fill="#2e7d32"/>
+      <text x="155" y="14" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">▶ ANALYSER</text>
+    </g>
+  </g>
+
+  <!-- Frame 1 caption -->
+  <text x="240" y="585" text-anchor="middle" font-size="14" font-weight="600" fill="#37474f">
+    1 · ASC décrit en voix + photo
+  </text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="450" y1="320" x2="540" y2="320" stroke="#1b5e20" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="495" y="305" text-anchor="middle" font-size="11" fill="#1b5e20">RAG WHO IMCI</text>
+  <text x="495" y="345" text-anchor="middle" font-size="10" fill="#546e7a">~25 ms retrieval</text>
+
+  <!-- ============ FRAME 2 ============ -->
+  <g transform="translate(560, 90)">
+    <g filter="url(#shadow)">
+      <rect width="380" height="460" rx="32" fill="#212121"/>
+      <rect x="14" y="14" width="352" height="432" rx="20" fill="url(#phoneScreen)"/>
+    </g>
+    <text x="35" y="50" font-size="13" font-weight="600" fill="#263238">9:42</text>
+    <g transform="translate(35, 65)">
+      <rect width="90" height="22" rx="11" fill="#2e7d32"/>
+      <text x="45" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">HORS LIGNE</text>
+    </g>
+
+    <!-- Big triage banner -->
+    <g transform="translate(35, 110)">
+      <rect width="310" height="105" rx="14" fill="#ffebee" stroke="#c62828" stroke-width="4"/>
+      <text x="155" y="35" text-anchor="middle" font-size="22" font-weight="800" fill="#b71c1c">🚨 TRIAGE ROUGE</text>
+      <text x="155" y="58" text-anchor="middle" font-size="13" font-weight="600" fill="#b71c1c">Référer immédiatement</text>
+      <text x="155" y="80" text-anchor="middle" font-size="11" fill="#880e4f">Léthargie + refus boire</text>
+      <text x="155" y="95" text-anchor="middle" font-size="11" fill="#880e4f">= signe de danger général</text>
+    </g>
+
+    <!-- Confidence -->
+    <g transform="translate(35, 235)">
+      <text x="0" y="14" font-size="11" fill="#37474f">Confiance modèle</text>
+      <rect x="0" y="22" width="260" height="9" rx="4" fill="#eceff1"/>
+      <rect x="0" y="22" width="260" height="9" rx="4" fill="#2e7d32"/>
+      <text x="280" y="32" font-size="11" font-weight="700" fill="#1b5e20">100%</text>
+    </g>
+
+    <!-- Citation -->
+    <g transform="translate(35, 280)">
+      <text x="0" y="14" font-size="10" fill="#37474f">Source citée :</text>
+      <text x="0" y="32" font-size="11" font-weight="600" fill="#1b5e20">WHO IMCI Chart Booklet, p. 7</text>
+      <text x="0" y="48" font-size="10" font-style="italic" fill="#546e7a">Signes de danger général chez l'enfant</text>
+    </g>
+
+    <!-- Latency -->
+    <g transform="translate(35, 345)">
+      <rect width="310" height="50" rx="8" fill="#e8f5e9"/>
+      <text x="15" y="22" font-size="11" font-weight="700" fill="#1b5e20">⏱️ Pipeline</text>
+      <text x="15" y="40" font-size="10" fill="#33691e">RAG 25 ms · LLM 26 s · Total &lt; 30 s</text>
+    </g>
+
+    <!-- Sources count -->
+    <g transform="translate(35, 410)">
+      <text x="0" y="14" font-size="10" fill="#546e7a">4 protocoles WHO consultés (top-k=4)</text>
+    </g>
+  </g>
+
+  <text x="750" y="585" text-anchor="middle" font-size="14" font-weight="600" fill="#37474f">
+    2 · Triage avec citation, en moins de 30 s
+  </text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="960" y1="320" x2="1050" y2="320" stroke="#1b5e20" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="1005" y="305" text-anchor="middle" font-size="11" fill="#1b5e20">Function call</text>
+  <text x="1005" y="345" text-anchor="middle" font-size="10" fill="#546e7a">JSON natif Gemma 4</text>
+
+  <!-- ============ FRAME 3 ============ -->
+  <g transform="translate(1070, 90)">
+    <g filter="url(#shadow)">
+      <rect width="380" height="460" rx="32" fill="#212121"/>
+      <rect x="14" y="14" width="352" height="432" rx="20" fill="url(#phoneScreen)"/>
+    </g>
+    <text x="35" y="50" font-size="13" font-weight="600" fill="#263238">9:42</text>
+    <g transform="translate(35, 65)">
+      <rect width="60" height="22" rx="11" fill="#ff9800"/>
+      <text x="30" y="16" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">2G</text>
+    </g>
+
+    <!-- SMS preview -->
+    <g transform="translate(35, 110)">
+      <rect width="310" height="180" rx="14" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+      <text x="155" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#1b5e20">📨 SMS auto-généré</text>
+      <line x1="20" y1="42" x2="290" y2="42" stroke="#a5d6a7"/>
+
+      <text x="20" y="65" font-size="11" fill="#1b5e20" font-family="monospace">[MEDIBOUSSOLE]</text>
+      <text x="20" y="83" font-size="10" fill="#1b5e20" font-family="monospace">Patient F 14m,</text>
+      <text x="20" y="98" font-size="10" fill="#1b5e20" font-family="monospace">fièvre 39 + léthargie,</text>
+      <text x="20" y="113" font-size="10" fill="#1b5e20" font-family="monospace">MUAC 11.2 (jaune).</text>
+      <text x="20" y="128" font-size="10" fill="#b71c1c" font-weight="700" font-family="monospace">TRIAGE: ROUGE</text>
+      <text x="20" y="143" font-size="10" fill="#1b5e20" font-family="monospace">Source: IMCI p.7</text>
+      <text x="20" y="158" font-size="10" fill="#1b5e20" font-family="monospace">ETA: 25 min via moto</text>
+
+      <text x="155" y="172" text-anchor="middle" font-size="9" fill="#546e7a">158 / 160 caractères</text>
+    </g>
+
+    <!-- Send status -->
+    <g transform="translate(35, 305)">
+      <rect width="310" height="35" rx="8" fill="#c8e6c9"/>
+      <text x="155" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#1b5e20">✓ Envoyé via 2G — 0,5 KB</text>
+    </g>
+
+    <!-- Audit trail -->
+    <g transform="translate(35, 360)">
+      <rect width="310" height="60" rx="8" fill="#fafafa" stroke="#bdbdbd"/>
+      <text x="15" y="22" font-size="10" font-weight="700" fill="#37474f">📂 Sauvegardé localement</text>
+      <text x="15" y="38" font-size="9" fill="#546e7a">Chiffré AES-256 · audit médico-légal</text>
+      <text x="15" y="52" font-size="9" fill="#546e7a">Aucune donnée envoyée au cloud</text>
+    </g>
+  </g>
+
+  <text x="1260" y="585" text-anchor="middle" font-size="14" font-weight="600" fill="#37474f">
+    3 · SMS structuré envoyé via 2G — médecin alerté
+  </text>
+</svg>

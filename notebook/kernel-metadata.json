@@ -1,0 +1,16 @@
+{
+  "id": "taboutmhamed/mediboussole-gemma4-imci-triage",
+  "title": "MediBoussole — Offline IMCI Triage with Gemma 4",
+  "code_file": "medi-boussole.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [
+    "gemma-4-good-hackathon"
+  ],
+  "kernel_sources": []
+}

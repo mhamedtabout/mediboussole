@@ -186,7 +186,7 @@ Ma famille en zone rurale ne sera pas la dernière à avoir une médecine de qua
 - 🎬 **Vidéo (3 min)** : https://youtu.be/JMaf947uMTM
 - 💻 **Repo public** : [GitHub link à insérer après `gh repo create`]
 - 🌐 **Démo live** : https://regression-wooden-pine-educators.trycloudflare.com (en attendant déploiement HF Spaces)
-- 📓 **Notebook Kaggle** : [Kaggle Notebook link à insérer après publication]
+- 📓 **Notebook Kaggle** : https://www.kaggle.com/code/taboutmhamed/mediboussole-offline-imci-triage-with-gemma-4
 - 🩺 **Modèle Ollama** : `gemma4:e4b-it-q4_K_M`
 
 ## Remerciements

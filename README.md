@@ -37,6 +37,7 @@ Modèle : **Gemma 4 E4B**, quantifié **Q4_K_M** (~2,3 GB), servi via **Ollama**
 ## Liens publics
 
 - 🎬 **Vidéo (3 min)** : https://youtu.be/JMaf947uMTM
+- 📓 **Notebook Kaggle** : https://www.kaggle.com/code/taboutmhamed/mediboussole-offline-imci-triage-with-gemma-4
 - 🌐 **Démo live** : https://regression-wooden-pine-educators.trycloudflare.com
 
 ## Architecture en une image

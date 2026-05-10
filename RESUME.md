@@ -35,6 +35,7 @@
 
 - 🎬 **Vidéo YouTube** : https://youtu.be/JMaf947uMTM
 - 📓 **Notebook Kaggle** : https://www.kaggle.com/code/taboutmhamed/mediboussole-offline-imci-triage-with-gemma-4
+- 💻 **Repo GitHub** : https://github.com/mhamedtabout/mediboussole
 - 🌐 **Démo live (Cloudflare tunnel)** : https://regression-wooden-pine-educators.trycloudflare.com
   ⚠️ Le tunnel est éphémère — tant que votre Mac + Streamlit + cloudflared tournent.
 

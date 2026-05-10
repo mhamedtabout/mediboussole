@@ -6,7 +6,7 @@
 >
 > **Author** : Mhamed Tabout (solo) · **Licence** : CC-BY 4.0
 
-🎬 **[Regarder la démo en 3 minutes →](https://youtu.be/JMaf947uMTM)** · 📓 [Notebook Kaggle reproductible](https://www.kaggle.com/code/taboutmhamed/mediboussole-offline-imci-triage-with-gemma-4) · 🌐 [Démo live](https://regression-wooden-pine-educators.trycloudflare.com)
+🎬 **[Regarder la démo en 3 minutes →](https://youtu.be/JMaf947uMTM)** · 📓 [Notebook Kaggle reproductible](https://www.kaggle.com/code/taboutmhamed/mediboussole-offline-imci-triage-with-gemma-4) · 💻 [Code GitHub](https://github.com/mhamedtabout/mediboussole) · 🌐 [Démo live](https://regression-wooden-pine-educators.trycloudflare.com)
 
 ---
 
@@ -182,7 +182,7 @@ Ma famille en zone rurale ne sera pas la dernière à avoir une médecine de qua
 ## Liens
 
 - 🎬 **Vidéo (3 min)** : https://youtu.be/JMaf947uMTM
-- 💻 **Repo public** : [GitHub link à insérer après `gh repo create`]
+- 💻 **Repo public** : https://github.com/mhamedtabout/mediboussole
 - 🌐 **Démo live** : https://regression-wooden-pine-educators.trycloudflare.com (en attendant déploiement HF Spaces)
 - 📓 **Notebook Kaggle** : https://www.kaggle.com/code/taboutmhamed/mediboussole-offline-imci-triage-with-gemma-4
 - 🩺 **Modèle Ollama** : `gemma4:e4b-it-q4_K_M`

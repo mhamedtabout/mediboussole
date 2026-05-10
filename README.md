@@ -34,6 +34,11 @@ Modèle : **Gemma 4 E4B**, quantifié **Q4_K_M** (~2,3 GB), servi via **Ollama**
 - 🩺 **Health & Sciences** (Impact Track)
 - 🧠 **Ollama** (Special Technology Track)
 
+## Liens publics
+
+- 🎬 **Vidéo (3 min)** : https://youtu.be/JMaf947uMTM
+- 🌐 **Démo live** : https://regression-wooden-pine-educators.trycloudflare.com
+
 ## Architecture en une image
 
 Voir `docs/architecture.svg` pour le schéma complet, et `docs/gemma4-schema.svg` pour la famille de modèles Gemma 4.

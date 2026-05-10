@@ -183,10 +183,10 @@ Ma famille en zone rurale ne sera pas la dernière à avoir une médecine de qua
 
 ## Liens
 
-- 🎬 **Vidéo (3 min)** : [YouTube link à insérer]
-- 💻 **Repo public** : [GitHub link à insérer]
-- 🌐 **Démo live** : [HF Spaces / Streamlit Cloud link à insérer]
-- 📓 **Notebook Kaggle** : [Kaggle Notebook link à insérer]
+- 🎬 **Vidéo (3 min)** : https://youtu.be/JMaf947uMTM
+- 💻 **Repo public** : [GitHub link à insérer après `gh repo create`]
+- 🌐 **Démo live** : https://regression-wooden-pine-educators.trycloudflare.com (en attendant déploiement HF Spaces)
+- 📓 **Notebook Kaggle** : [Kaggle Notebook link à insérer après publication]
 - 🩺 **Modèle Ollama** : `gemma4:e4b-it-q4_K_M`
 
 ## Remerciements

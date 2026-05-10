@@ -28,9 +28,14 @@
 
 ### Modèle Gemma 4
 
-- 🔄 **EN COURS DE TÉLÉCHARGEMENT** : `gemma4:e4b-it-q4_K_M` (~9.6 GB)
-- Vitesse observée : 2.6 MB/s → ETA ~1 heure
-- ⚠️ **Le pull tourne dans la session Claude Code en cours.** Si vous fermez Claude Code, il peut s'arrêter.
+- ✅ **TÉLÉCHARGÉ** : `gemma4:e4b-it-q4_K_M` (9.6 GB) installé localement
+- Sanity check : 5/5 ✓ · Garde-fou Hodgkin déclenché ✓
+
+### Liens publics
+
+- 🎬 **Vidéo YouTube** : https://youtu.be/JMaf947uMTM
+- 🌐 **Démo live (Cloudflare tunnel)** : https://regression-wooden-pine-educators.trycloudflare.com
+  ⚠️ Le tunnel est éphémère — tant que votre Mac + Streamlit + cloudflared tournent.
 
 ---
 

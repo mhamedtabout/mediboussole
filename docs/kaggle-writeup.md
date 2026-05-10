@@ -75,32 +75,20 @@ ASC ──voix/photo──▶ whisper.cpp + preprocess
               Triage + SMS + Note SOAP + Audit local
 ```
 
-Composants :
-
-- **Modèle** : `gemma4:e4b-it-q4_K_M` (instruction-tuned, ~4B paramètres effectifs, Q4_K_M)
-- **Inférence** : Ollama (Apple Silicon, Linux, Android via portage llama.cpp)
-- **RAG** : FAISS `IndexFlatIP` + `paraphrase-multilingual-mpnet-base-v2` (50+ langues)
-- **Corpus** : WHO IMCI Chart Booklet (publié sous licence ouverte WHO)
-- **Voix** : `whisper.cpp` local (multilingue)
-- **App démo** : Streamlit (`src/app.py`)
+Stack : Gemma 4 E4B Q4_K_M via Ollama · FAISS + multilingual-mpnet · WHO IMCI Chart Booklet · whisper.cpp · Streamlit.
 
 ---
 
-## 3 bis. Pourquoi maintenant — et pas avant
+## 3 bis. Pourquoi 2026 est la première année où c'est faisable
 
-L'idée d'un assistant médical hors-ligne n'est pas nouvelle. **L'exécution l'est.** Voici pourquoi 2026 est la première année où ce projet est faisable :
-
-| Génération | Modèle de référence | Verrou |
+| Année | Modèle | Verrou |
 |---|---|---|
-| 2022 | LLaMA 7B FP16 (~13 GB) | Trop gros pour Android, multimodal séparé via OCR fragile |
-| 2023 | Gemma 1 7B Q4 (~4 GB) | Pas multimodal, function calling à émuler avec parsing fragile |
-| 2024 | Gemma 2 / 3n (~3 GB) | Multimodal arrivé mais function calling non natif |
-| 2025 | Phi-3.5, Llama 3.2 | Multimodal partiel, contexte limité, dosages hallucinés |
-| **2026** | **Gemma 4 E4B Q4_K_M (~3 GB)** | **Multimodal natif + function calling natif + tient en RAM Android** |
+| 2023 | Gemma 1 7B Q4 | Pas multimodal, function calling à émuler |
+| 2024 | Gemma 2/3n | Multimodal arrivé, function calling pas natif |
+| 2025 | Phi-3.5, Llama 3.2 | Multimodal partiel, dosages hallucinés |
+| **2026** | **Gemma 4 E4B Q4_K_M** | **Multimodal + function calling natifs en ~3 GB RAM** |
 
-Sans Gemma 4, MediBoussole exigerait : un classifieur d'image dédié + un OCR + un LLM séparé + un parser JSON tolérant + un RAG ad-hoc. Chacun est une source de fragilité dans une zone rurale sans ingénieur.
-
-**Avec Gemma 4, c'est UN forward pass.** L'ASC a un téléphone, pas un cluster Kubernetes. Cette compression de la complexité en un seul modèle est ce qui rend le déploiement à 3,5 M d'utilisateurs réaliste.
+Sans Gemma 4 : classifieur d'image + OCR + LLM séparé + parser tolérant + RAG ad-hoc. Avec Gemma 4 : **un forward pass.** Cette compression rend le déploiement à 3,5 M d'utilisateurs réaliste.
 
 ---
 
@@ -108,19 +96,13 @@ Sans Gemma 4, MediBoussole exigerait : un classifieur d'image dédié + un OCR +
 
 Trois capacités natives de Gemma 4 sont *nécessaires* au projet :
 
-### 4.1 Multimodal natif
+**4.1 Multimodal natif** — L'ASC photographie un enfant (œdème, MUAC rouge, lésion). Gemma 4 traite image et texte dans **un seul forward pass** via $W_p \in \mathbb{R}^{d \times d_v}$. Pas de pipeline OCR séparé.
 
-L'ASC photographie un enfant avec œdème, MUAC rouge, ou éruption cutanée. Gemma 4 traite l'image et le texte dans **un seul forward pass**. Pas de pipeline OCR fragile, pas de classifieur séparé. Mathématiquement, les patches visuels sont projetés via $W_p \in \mathbb{R}^{d \times d_v}$ dans l'espace d'embedding du décodeur, puis l'attention causale traite la séquence concaténée [tokens visuels ⊕ tokens texte] (voir `docs/mathematical-foundation.md` §3).
+**4.2 Function calling natif** — Décodage contraint par DFA garantissant que `send_referral_sms({...})` est **toujours parsable** :
 
-### 4.2 Function calling structuré natif
+$$p(y_{T+1} \mid x, \text{schema}) \propto p(y_{T+1} \mid x) \cdot \mathbb{1}[y_{T+1} \in \mathcal{A}(\text{state})]$$
 
-Le décodage contraint par DFA garantit que l'appel `send_referral_sms({...})` est **toujours parsable** :
-
-$$
-p(y_{T+1} \mid x, \text{schema}) \propto p(y_{T+1} \mid x) \cdot \mathbb{1}[y_{T+1} \in \mathcal{A}(\text{state})]
-$$
-
-Zéro JSON invalide. Zéro post-processing fragile. Le SMS arrive structuré ou n'arrive pas.
+Zéro JSON invalide.
 
 ### 4.3 Variante Edge (E4B)
 
@@ -136,17 +118,14 @@ C'est ce qui rend possible le déploiement sur un Android à 150€.
 
 ## 5. Garde-fous (Safety & Trust)
 
-L'architecture intègre **quatre garde-fous calibrés** :
+Quatre garde-fous calibrés :
 
-1. **Scope verrouillé** : IMCI 2 mois — 5 ans uniquement. Toute requête hors scope (oncologie, chirurgie, pathologies adultes) déclenche "référer". MediBoussole ne fait *pas* ce qu'il ne sait *pas* faire.
+1. **Scope verrouillé** : IMCI 2 mois–5 ans. Hors-scope (oncologie, adulte) → "référer".
+2. **Abstention par seuil** : si $\sigma_{\max}(Q) < \tau{=}0{,}40$, on refuse de diagnostiquer et on oriente.
+3. **Citation obligatoire** : pas de retrieval → pas de recommandation.
+4. **Audit trail local** chiffré AES-256, exportable.
 
-2. **Abstention par seuil** : si $\sigma_{\max}(Q) = \max_i \langle \tilde{q}, v_i \rangle < \tau$, le système refuse de générer un diagnostic et oriente vers le centre de santé. $\tau \approx 0{,}40$ calibré pour privilégier le rappel sur les cas critiques (F2-score).
-
-3. **Citation obligatoire** : chaque sortie cite la page IMCI source. Pas de retrieval → pas de citation → pas de recommandation.
-
-4. **Audit trail local** : entrée + sortie + chunks récupérés sont journalisés (chiffrement AES-256), exportables pour revue médicale ou médico-légale.
-
-MediBoussole est un **outil d'aide à la décision**, pas un dispositif médical certifié. Cette discipline du scope est revendiquée.
+MediBoussole est un outil d'**aide à la décision**, pas un dispositif certifié.
 
 ---
 
@@ -179,39 +158,22 @@ Le set d'évaluation sera étendu à 50+ cas calibrés avant la soumission.
 
 ---
 
-## 7. Reproductibilité
+## 7. Reproduction
 
 ```bash
-git clone <repo-url>
-cd TheGemma4GoodHackathon
-python3 -m venv .venv && source .venv/bin/activate
+git clone <repo>
 pip install -r requirements.txt
 ollama pull gemma4:e4b-it-q4_K_M
-streamlit run src/app.py        # démo web
-jupytext --to notebook notebook/medi-boussole.py  # pour Kaggle
+streamlit run src/app.py
 ```
 
-PDF WHO IMCI : `data/raw/imci_chart_booklet.pdf` (téléchargeable depuis [iris.who.int](https://iris.who.int/handle/10665/104772)).
-
-Hardware de référence : Mac M1 Max 32 GB. Tourne aussi sur Linux/Windows. Cible production : Android 6 GB (testé en émulateur ; portage natif via llama.cpp).
+PDF WHO IMCI public sur [iris.who.int](https://iris.who.int/handle/10665/104772). Hardware de référence : Mac M1 Max ; cible production : Android 6 GB via llama.cpp.
 
 ---
 
-## 8. Différenciation
+## 8. Vision et impact
 
-Pourquoi MediBoussole peut gagner :
-
-- **Authenticité** : ce projet n'est pas une démo pour démos. Ma famille est concernée.
-- **Profondeur technique** : RAG calibré, quantification Q4_K_M maîtrisée, function calling structuré, abstention formelle (voir doc math).
-- **Discipline du scope** : ce qu'on ne fait *pas* est explicite. Les juges Safety & Trust vont apprécier.
-- **Open source CC-BY 4.0** : code, schémas, math, storyboard vidéo, tous reproductibles.
-- **Stack 100% open** : Gemma 4 + Ollama + sentence-transformers + FAISS + Streamlit. Aucun vendor lock-in. Coût marginal de déploiement = 0.
-
----
-
-## 9. Vision
-
-3,5 millions d'agents de santé communautaires. Un téléphone Android à 150€. Aucun internet requis. Si MediBoussole économise *une seule consultation tardive* par ASC par mois, c'est **42 millions de triages assistés par an** — et chaque triage assisté évite potentiellement la perte d'un enfant.
+3,5 millions d'ASC. Un Android à 150€. Zéro internet. Si MediBoussole assiste **une consultation tardive par ASC par mois**, c'est 42 M de triages assistés/an — et chacun évite potentiellement la perte d'un enfant.
 
 Ma famille en zone rurale ne sera pas la dernière à avoir une médecine de qualité. Avec Gemma 4, elle peut être parmi les premières.
 
